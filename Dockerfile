@@ -15,7 +15,7 @@ RUN echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/zzz-no-recomme
     libmp3lame0 libflac8 libfaad2 libmp4v2-2 \
     python2.7 perl \
  && git clone https://github.com/Moonbase59/ices0.git \
- && aclocal && autoreconf -f -i -v \
+ && cd ices0 && aclocal && autoreconf -f -i -v \
  && ./configure && make && make install \
  && for file in $(find /usr/local/etc/ -name \*\.dist); do mv $file ${file%".dist"}; done \
  && apt-get remove --purge --auto-remove -y \
